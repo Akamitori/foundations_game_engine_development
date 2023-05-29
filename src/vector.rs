@@ -1,2 +1,2 @@
-﻿pub mod vector3D;
-pub mod vector3DOperations;
+﻿pub mod vector_3d;
+pub mod vector_3d_operations;
