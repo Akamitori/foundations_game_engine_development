@@ -1,6 +1,6 @@
 ﻿use crate::vector::vector_3d::Vector3d;
 
-#[derive(Default, Debug)]
+#[derive(Default, Debug, Clone)]
 pub struct Matrix3d {
     n: [[f64; 3]; 3],
 }
