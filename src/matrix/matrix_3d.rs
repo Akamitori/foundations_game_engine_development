@@ -27,7 +27,7 @@ impl Matrix3d {
                 [c.x, c.y, c.z]
             ],
         }
-    }
+    }       
 
     pub fn row(&self, row_index: usize) -> &[f64; 3] {
         &self.n[row_index]
@@ -44,4 +44,5 @@ impl Matrix3d {
     pub fn element_mutable(&mut self, i: usize, j: usize) -> &mut f64 {
         &mut self.n[j][i]
     }
+    
 }

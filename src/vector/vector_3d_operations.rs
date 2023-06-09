@@ -73,7 +73,7 @@ impl Neg for Vector3d {
     type Output = Vector3d;
 
     fn neg(self) -> Self::Output {
-        self*-1.0f64
+        self * -1.0f64
     }
 }
 
@@ -91,9 +91,9 @@ impl Add for Vector3d {
 
 impl AddAssign for Vector3d {
     fn add_assign(&mut self, rhs: Self) {
-        self.x+=rhs.x;
-        self.y+=rhs.x;
-        self.z+=rhs.x;
+        self.x += rhs.x;
+        self.y += rhs.x;
+        self.z += rhs.x;
     }
 }
 
@@ -111,9 +111,22 @@ impl Sub for Vector3d {
 
 impl SubAssign for Vector3d {
     fn sub_assign(&mut self, rhs: Self) {
-        self.x-=rhs.x;
-        self.y-=rhs.x;
-        self.z-=rhs.x;
+        self.x -= rhs.x;
+        self.y -= rhs.x;
+        self.z -= rhs.x;
     }
 }
 
+#[inline(always)]
+pub fn Dot(a: &Vector3d, b: &Vector3d) -> f64 {
+    return a.x * b.x + a.y * b.y + a.z * b.z;
+}
+
+#[inline(always)]
+pub fn Cross(a: &Vector3d, b: &Vector3d) -> Vector3d {
+    return Vector3d::new(
+        a.y * b.z - a.z * b.y,
+        a.z * b.x - a.x * b.z,
+        a.x * b.y - a.y * b.x,
+    );
+}
