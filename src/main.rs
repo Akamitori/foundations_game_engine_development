@@ -1,11 +1,13 @@
-use std::borrow::Borrow;
-
-use matrix::matrix_3d::Matrix3d;
-use vector::vector_3d::Vector3d;
-use crate::vector::vector_3d_operations;
-
 pub mod vector;
+use vector::vector_3d::Vector3d;
+use vector::vector_3d_operations;
+use vector::vector_4d::Vector4d;
+
 pub mod matrix;
+use matrix::matrix_3d::Matrix3d;
+
+
+
 
 
 fn main() {
@@ -14,15 +16,22 @@ fn main() {
     let mut z: Vector3d = Vector3d::new(0f64,0f64,0f64);
     let mut m=Matrix3d::from_vectors(&x,&y,&z);
     
-    let m2=m.reverse();
+    let mut v=&mut m[0];
+    v.x=13.0;
+    
+    //let what2=what[0];
+    
+    //let m2=m.inverse();
     
     
-     println!("{:?}",m);
-    println!("{:?}",m2);
+    //let v : Vector4d = Vector4d::new(1f64,2f64,3f64,5f64);
     
-    let z=1.0/0.0;
-    
-    println!("{:?}",z);
+    //let z =   v.as_vector3d();
+    //let y= unsafe { &*z };
+
+
+    println!("{:?}",v);
+    println!("{:?}",m);
     
     
 

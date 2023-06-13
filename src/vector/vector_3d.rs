@@ -1,13 +1,11 @@
 ﻿use crate::vector::vector_3d_operations::Dot;
 
-#[derive(Default, Debug, Clone, Copy)]
+#[derive(Default, Debug, Clone)]
 pub struct Vector3d {
     pub x: f64,
     pub y: f64,
     pub z: f64,
 }
-
-
 
 impl Vector3d {
     pub fn new(x: f64, y: f64, z: f64) -> Self {
@@ -25,17 +23,16 @@ impl Vector3d {
 
     #[inline(always)]
     pub fn normalize(&self) -> Vector3d {
-        return self.clone() / self.magnitude();
+        return self/ self.magnitude();
     }
 
     #[inline(always)]
     pub fn Project(&self, to: &Vector3d) -> Vector3d {
-        return *to * Dot(self, to) / Dot(to, to);
+        return to * Dot(self, to) / Dot(to, to);
     }
 
     #[inline(always)]
     pub fn Reject(&self, from: &Vector3d) -> Vector3d {
-        return *self - *from * Dot(self, from) / Dot(from, from);
+        return self - from * Dot(self, from) / Dot(from, from);
     }
 }
-

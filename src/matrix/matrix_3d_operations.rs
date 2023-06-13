@@ -1,25 +1,25 @@
 ﻿use std::ops::{Index, IndexMut, Mul};
 
-use crate::Matrix3d;
+use crate::matrix::matrix_3d::Matrix3d;
 use crate::vector::vector_3d::Vector3d;
 
 impl Index<usize> for Matrix3d {
     type Output = Vector3d;
 
     fn index(&self, index: usize) -> &Self::Output {
-        if index > 3 {
+        if index > 2 {
             panic!("Out of 3d matrix range");
         }
 
         let r = self.row(index).as_ptr() as *const Vector3d;
-
+        
         return unsafe { &*r };
     }
 }
 
 impl IndexMut<usize> for Matrix3d {
     fn index_mut(&mut self, index: usize) -> &mut Self::Output {
-        if index > 3 {
+        if index > 2 {
             panic!("Out of 3d matrix range");
         }
 

@@ -35,10 +35,26 @@ impl Mul<f64> for Vector3d {
     }
 }
 
+impl Mul<f64> for &Vector3d {
+    type Output = Vector3d;
+
+    fn mul(self, rhs: f64) -> Self::Output {
+        Vector3d::new(self.x * rhs, self.y * rhs, self.z * rhs)
+    }
+}
+
 impl Mul<Vector3d> for f64 {
     type Output = Vector3d;
 
-    fn mul(self, rhs: Self::Output) -> Self::Output {
+    fn mul(self, rhs: Vector3d) -> Self::Output {
+        Vector3d::new(rhs.x * self, rhs.y * self, rhs.z * self)
+    }
+}
+
+impl Mul<&Vector3d> for f64 {
+    type Output = Vector3d;
+
+    fn mul(self, rhs: &Vector3d) -> Self::Output {
         Vector3d::new(rhs.x * self, rhs.y * self, rhs.z * self)
     }
 }
@@ -52,6 +68,15 @@ impl MulAssign<f64> for Vector3d {
 }
 
 impl Div<f64> for Vector3d {
+    type Output = Vector3d;
+
+    fn div(self, rhs: f64) -> Self::Output {
+        let multiplier = 1f64 / rhs;
+        Vector3d::new(self.x * multiplier, self.y * multiplier, self.z * multiplier)
+    }
+}
+
+impl Div<f64> for &Vector3d {
     type Output = Vector3d;
 
     fn div(self, rhs: f64) -> Self::Output {
@@ -77,10 +102,46 @@ impl Neg for Vector3d {
     }
 }
 
-impl Add for Vector3d {
+impl Add<Vector3d> for Vector3d {
     type Output = Vector3d;
 
-    fn add(self, rhs: Self) -> Self::Output {
+    fn add(self, rhs: Vector3d) -> Self::Output {
+        Vector3d::new(
+            self.x + rhs.x,
+            self.y + rhs.y,
+            self.z + rhs.z,
+        )
+    }
+}
+
+impl Add<&Vector3d> for Vector3d {
+    type Output = Vector3d;
+
+    fn add(self, rhs: &Vector3d) -> Self::Output {
+        Vector3d::new(
+            self.x + rhs.x,
+            self.y + rhs.y,
+            self.z + rhs.z,
+        )
+    }
+}
+
+impl Add<Vector3d> for &Vector3d {
+    type Output = Vector3d;
+
+    fn add(self, rhs: Vector3d) -> Self::Output {
+        Vector3d::new(
+            self.x + rhs.x,
+            self.y + rhs.y,
+            self.z + rhs.z,
+        )
+    }
+}
+
+impl Add<&Vector3d> for &Vector3d {
+    type Output = Vector3d;
+
+    fn add(self, rhs: &Vector3d) -> Self::Output {
         Vector3d::new(
             self.x + rhs.x,
             self.y + rhs.y,
@@ -97,10 +158,46 @@ impl AddAssign for Vector3d {
     }
 }
 
-impl Sub for Vector3d {
+impl Sub<Vector3d> for Vector3d {
     type Output = Vector3d;
 
-    fn sub(self, rhs: Self) -> Self::Output {
+    fn sub(self, rhs: Vector3d) -> Self::Output {
+        Vector3d::new(
+            self.x - rhs.x,
+            self.y - rhs.y,
+            self.z - rhs.z,
+        )
+    }
+}
+
+impl Sub<&Vector3d> for Vector3d {
+    type Output = Vector3d;
+
+    fn sub(self, rhs: &Vector3d) -> Self::Output {
+        Vector3d::new(
+            self.x - rhs.x,
+            self.y - rhs.y,
+            self.z - rhs.z,
+        )
+    }
+}
+
+impl Sub<Vector3d> for &Vector3d {
+    type Output = Vector3d;
+
+    fn sub(self, rhs: Vector3d) -> Self::Output {
+        Vector3d::new(
+            self.x - rhs.x,
+            self.y - rhs.y,
+            self.z - rhs.z,
+        )
+    }
+}
+
+impl Sub<&Vector3d> for &Vector3d {
+    type Output = Vector3d;
+
+    fn sub(self, rhs: &Vector3d) -> Self::Output {
         Vector3d::new(
             self.x - rhs.x,
             self.y - rhs.y,

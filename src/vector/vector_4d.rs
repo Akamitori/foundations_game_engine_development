@@ -1,4 +1,5 @@
-﻿use crate::vector::vector_3d_operations::Dot;
+﻿use crate::vector::vector_3d::Vector3d;
+use crate::vector::vector_3d_operations::Dot;
 
 #[derive(Default, Debug, Clone, Copy)]
 pub struct Vector4d {
@@ -18,5 +19,9 @@ impl Vector4d {
             z,
             w
         }
+    }
+    
+    pub fn as_vector3d(&self) ->&Vector3d{
+        return  unsafe {&*(self as *const Vector4d as *const Vector3d)};
     }
 }

@@ -53,14 +53,14 @@ impl Matrix3d {
         + self.element(0, 2) * (self.element(1, 0) * self.element(2, 1) - self.element(1, 1) * self.element(2, 0));
     }
     
-    pub fn reverse(&self) -> Matrix3d {
-        let a = self[0];
-        let b = self[1];
-        let c = self[2];
+    pub fn inverse(&self) -> Matrix3d {
+        let a = &self[0];
+        let b = &self[1];
+        let c = &self[2];
 
-        let r0 = Cross(&b, &c);
-        let r1 = Cross(&c, &a);
-        let r2 = Cross(&a, &b);
+        let r0 = Cross(b, c);
+        let r1 = Cross(c, a);
+        let r2 = Cross(a, b);
         
         let invDet=1f64/ Dot(&r2,&c);
         
