@@ -11,9 +11,7 @@ impl Index<usize> for Matrix3d {
             panic!("Out of 3d matrix range");
         }
 
-        let r = self.row(index).as_ptr() as *const Vector3d;
-        
-        return unsafe { &*r };
+        self.row(index).as_ref()
     }
 }
 
@@ -23,9 +21,7 @@ impl IndexMut<usize> for Matrix3d {
             panic!("Out of 3d matrix range");
         }
 
-        let r = self.row_mut(index).as_mut_ptr() as *mut Vector3d;
-
-        return unsafe { &mut *r };
+        self.row_mut(index).as_mut()
     }
 }
 

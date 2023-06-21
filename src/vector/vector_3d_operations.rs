@@ -227,3 +227,15 @@ pub fn Cross(a: &Vector3d, b: &Vector3d) -> Vector3d {
         a.x * b.y - a.y * b.x,
     );
 }
+
+impl AsRef<Vector3d> for [f64; 3] {
+    fn as_ref(&self) -> &Vector3d {
+        unsafe { &*(self as *const [f64; 3] as *const Vector3d) }
+    }
+}
+
+impl AsMut<Vector3d> for [f64; 3] {
+    fn as_mut(&mut self) -> &mut Vector3d {
+        unsafe { &mut *(self as *mut [f64; 3] as *mut Vector3d) }
+    }
+}
