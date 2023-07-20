@@ -1,7 +1,7 @@
-use std::fmt::{Display, Formatter, write};
+
 use crate::transform::transform_vector::{TransformVector, VectorWrapper};
 use crate::vector::Vector3d;
-use std::ops::{Deref, DerefMut};
+
 
 pub type Point3D = TransformVector<Vector3dPoint>;
 

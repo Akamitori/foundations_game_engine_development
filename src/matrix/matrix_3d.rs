@@ -7,6 +7,7 @@ pub struct Matrix3d {
 }
 
 impl Matrix3d {
+    #[allow(clippy::too_many_arguments)]
     pub fn new(
         n00: f64, n01: f64, n02: f64, 
         n10: f64, n11: f64, n12: f64, 
@@ -63,12 +64,12 @@ impl Matrix3d {
         let r1 = cross(c, a);
         let r2 = cross(a, b);
 
-        let inv_det = 1f64 / dot(&r2, &c);
+        let inv_det = 1f64 / dot(&r2, c);
 
-        return Matrix3d::new(
+        Matrix3d::new(
             r0.x * inv_det, r0.y * inv_det, r0.z * inv_det,
             r1.x * inv_det, r1.y * inv_det, r1.z * inv_det,
             r2.x * inv_det, r2.y * inv_det, r2.z * inv_det,
-        );
+        )
     }
 }

@@ -1,5 +1,5 @@
 use std::ops::{
-    Add, AddAssign, Deref, Div, DivAssign, Index, IndexMut, Mul, MulAssign, Neg, Sub, SubAssign,
+    Add, AddAssign, Div, DivAssign, Index, IndexMut, Mul, MulAssign, Neg, Sub, SubAssign,
 };
 
 use crate::vector::Vector3d;
@@ -185,16 +185,16 @@ impl SubAssign for Vector3d {
 
 #[inline(always)]
 pub fn dot(a: &Vector3d, b: &Vector3d) -> f64 {
-    return a.x * b.x + a.y * b.y + a.z * b.z;
+    a.x * b.x + a.y * b.y + a.z * b.z
 }
 
 #[inline(always)]
 pub fn cross(a: &Vector3d, b: &Vector3d) -> Vector3d {
-    return Vector3d::new(
+    Vector3d::new(
         a.y * b.z - a.z * b.y,
         a.z * b.x - a.x * b.z,
         a.x * b.y - a.y * b.x,
-    );
+    )
 }
 
 impl AsRef<Vector3d> for [f64; 3] {

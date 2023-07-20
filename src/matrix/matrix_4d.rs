@@ -7,6 +7,7 @@ pub struct Matrix4d {
 }
 
 impl Matrix4d {
+    #[allow(clippy::too_many_arguments)]
     pub fn new(
         n00: f64, n01: f64, n02: f64, n03: f64, 
         n10: f64, n11: f64, n12: f64, n13: f64, 
@@ -77,10 +78,10 @@ impl Matrix4d {
         let r2 = cross(d, &u) + &s * w;
         let r3 = cross(&u, c) - &s * z;
 
-        return Matrix4d::new(
+        Matrix4d::new(
             r0.x, r0.y, r0.z, -dot(b, &t),
             r1.x, r1.y, r1.z, dot(a, &t),
             r2.x, r2.y, r2.z, -dot(d, &s),
-            r3.x, r3.y, r3.z, dot(c, &s));
+            r3.x, r3.y, r3.z, dot(c, &s))
     }
 }

@@ -182,7 +182,7 @@ pub fn dot<T: VectorWrapper, U: VectorWrapper>(
 ) -> f64 {
     let a = a.get_vector();
     let b = b.get_vector();
-    return innerDot(a, b);
+    innerDot(a, b)
 }
 
 #[inline(always)]
@@ -192,5 +192,5 @@ pub fn cross<T: VectorWrapper, U: VectorWrapper>(
 ) -> Vector3D {
     let a = a.get_vector();
     let b = b.get_vector();
-    return Vector3D::from(innerCross(a, b));
+    Vector3D::from(innerCross(a, b))
 }

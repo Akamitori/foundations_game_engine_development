@@ -15,7 +15,7 @@ impl Index<usize> for Transform4d {
 
         let r = self.row(index).as_ptr() as *const Vector3d;
 
-        return unsafe { &*r };
+        unsafe { &*r }
     }
 }
 
@@ -27,7 +27,7 @@ impl IndexMut<usize> for Transform4d {
 
         let r = self.row_mut(index).as_mut_ptr() as *mut Vector3d;
 
-        return unsafe { &mut *r };
+        unsafe { &mut *r }
     }
 }
 
@@ -87,11 +87,11 @@ impl Mul for Transform4d {
                 + self.element(2, 2) * rhs.element(2, 3)
                 + self.element(2, 3);
 
-        return Transform4d::new(
+        Transform4d::new(
             n00, n01, n02, n03,
             n10, n11, n12, n13,
             n20, n21, n22, n23,
-        );
+        )
     }
 }
 

@@ -1,4 +1,4 @@
-use std::fmt::{Display, Formatter};
+
 use crate::transform::transform_vector::{TransformVector, VectorWrapper};
 use crate::vector::Vector3d;
 

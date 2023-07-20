@@ -1,4 +1,4 @@
-use std::fmt::{Debug, Display, Formatter};
+use std::fmt::{Debug, Formatter};
 
 use crate::transform::transform_vector_operations::dot;
 use crate::vector::Vector3d;
@@ -19,7 +19,7 @@ pub struct TransformVector<T: VectorWrapper>(T);
 
 impl<T: VectorWrapper> TransformVector<T> {
     pub fn new(x: f64, y: f64, z: f64) -> Self {
-        TransformVector::<T> { 0: T::new(x, y, z) }
+        TransformVector::<T>(T::new(x, y, z))
     }
 
     pub fn get_vector(&self) -> &Vector3d {
@@ -38,7 +38,7 @@ impl<T: VectorWrapper> TransformVector<T> {
 
     #[inline(always)]
     pub fn normalize(&self) -> Self {
-        return self / self.magnitude();
+        self / self.magnitude()
     }
 
     #[inline(always)]
@@ -67,8 +67,6 @@ impl<T: VectorWrapper> Debug for TransformVector<T> {
 
 impl<T: VectorWrapper> From<Vector3d> for TransformVector<T> {
     fn from(value: Vector3d) -> Self {
-        TransformVector::<T> {
-            0: T::new(value.x, value.y, value.z),
-        }
+        TransformVector::<T>(T::new(value.x, value.y, value.z))
     }
 }

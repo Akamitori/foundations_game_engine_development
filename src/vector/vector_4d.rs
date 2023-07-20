@@ -14,10 +14,10 @@ impl Vector4d {
     }
 
     pub fn as_vector3d(&self) -> &Vector3d {
-        return unsafe { &*(self as *const Vector4d as *const Vector3d) };
+        unsafe { &*(self as *const Vector4d as *const Vector3d) }
     }
 
-    pub fn as_vector3d_mut(&self) -> &mut Vector3d {
-        return unsafe { &mut *(self as *const Vector4d as *mut Vector3d) };
+    pub fn as_vector3d_mut(&mut self) -> &mut Vector3d {
+        unsafe { &mut *(self as *mut Vector4d as *mut Vector3d) }
     }
 }

@@ -10,6 +10,7 @@ pub struct Transform4d {
 }
 
 impl Transform4d {
+    #[allow(clippy::too_many_arguments)]
     pub fn new(
         n00: f64, n01: f64, n02: f64, n03: f64,
         n10: f64, n11: f64, n12: f64, n13: f64,
@@ -54,7 +55,7 @@ impl Transform4d {
     }
 
     pub fn get_translation(&self) -> &Point3D {
-        return unsafe { &*(&self[0] as *const Vector3d as *const Point3D) };
+        unsafe { &*(&self[0] as *const Vector3d as *const Point3D) }
     }
 
     pub fn set_translation(&mut self, p: &Point3D) {

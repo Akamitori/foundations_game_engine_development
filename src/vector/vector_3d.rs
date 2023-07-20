@@ -25,16 +25,16 @@ impl Vector3d {
 
     #[inline(always)]
     pub fn normalize(&self) -> Vector3d {
-        return self / self.magnitude();
+        self / self.magnitude()
     }
 
     #[inline(always)]
     pub fn project(&self, to: &Vector3d) -> Vector3d {
-        return to * dot(self, to) / dot(to, to);
+        to * dot(self, to) / dot(to, to)
     }
 
     #[inline(always)]
     pub fn reject(&self, from: &Vector3d) -> Vector3d {
-        return self - from * dot(self, from) / dot(from, from);
+        self - from * dot(self, from) / dot(from, from)
     }
 }

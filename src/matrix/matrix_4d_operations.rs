@@ -13,7 +13,7 @@ impl Index<usize> for Matrix4d {
 
         let r = self.row(index).as_ptr() as *const Vector4d;
 
-        return unsafe { &*r };
+        unsafe { &*r }
     }
 }
 
@@ -25,6 +25,6 @@ impl IndexMut<usize> for Matrix4d {
 
         let r = self.row_mut(index).as_mut_ptr() as *mut Vector4d;
 
-        return unsafe { &mut *r };
+        unsafe { &mut *r }
     }
 }
