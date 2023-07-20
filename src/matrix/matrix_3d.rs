@@ -1,5 +1,5 @@
-﻿use crate::vector::vector_3d::Vector3d;
-use crate::vector::vector_3d_operations::{Cross, Dot};
+use crate::vector::Vector3d;
+use crate::vector::vector_3d_operations::{cross, dot};
 
 #[derive(Default, Debug, Clone, Copy)]
 pub struct Matrix3d {
@@ -7,9 +7,10 @@ pub struct Matrix3d {
 }
 
 impl Matrix3d {
-    pub fn new(n00: f64, n01: f64, n02: f64,
-               n10: f64, n11: f64, n12: f64,
-               n20: f64, n21: f64, n22: f64,
+    pub fn new(
+        n00: f64, n01: f64, n02: f64, 
+        n10: f64, n11: f64, n12: f64, 
+        n20: f64, n21: f64, n22: f64,
     ) -> Self {
         Matrix3d {
             n: [
@@ -52,21 +53,22 @@ impl Matrix3d {
         + self.element(0, 1) * (self.element(1, 2) * self.element(2, 0) - self.element(1, 0) * self.element(2, 2)) 
         + self.element(0, 2) * (self.element(1, 0) * self.element(2, 1) - self.element(1, 1) * self.element(2, 0));
     }
-    
+
     pub fn inverse(&self) -> Matrix3d {
         let a = &self[0];
         let b = &self[1];
         let c = &self[2];
 
-        let r0 = Cross(b, c);
-        let r1 = Cross(c, a);
-        let r2 = Cross(a, b);
-        
-        let invDet=1f64/ Dot(&r2,&c);
-        
+        let r0 = cross(b, c);
+        let r1 = cross(c, a);
+        let r2 = cross(a, b);
+
+        let inv_det = 1f64 / dot(&r2, &c);
+
         return Matrix3d::new(
-            r0.x * invDet, r0.y * invDet, r0.z * invDet,
-            r1.x * invDet, r1.y * invDet, r1.z * invDet,
-            r2.x * invDet, r2.y * invDet, r2.z * invDet);
+            r0.x * inv_det, r0.y * inv_det, r0.z * inv_det,
+            r1.x * inv_det, r1.y * inv_det, r1.z * inv_det,
+            r2.x * inv_det, r2.y * inv_det, r2.z * inv_det,
+        );
     }
 }

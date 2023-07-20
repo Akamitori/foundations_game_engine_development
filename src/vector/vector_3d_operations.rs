@@ -1,17 +1,18 @@
-﻿use std::ops::{Add, AddAssign, Div, DivAssign, Index, IndexMut, Mul, MulAssign, Neg, Sub, SubAssign};
+use std::ops::{
+    Add, AddAssign, Deref, Div, DivAssign, Index, IndexMut, Mul, MulAssign, Neg, Sub, SubAssign,
+};
 
-use crate::vector::vector_3d::Vector3d;
+use crate::vector::Vector3d;
 
-impl Index<usize> for Vector3d where {
+impl Index<usize> for Vector3d {
     type Output = f64;
-
 
     fn index(&self, index: usize) -> &Self::Output {
         match index {
             0 => &self.x,
             1 => &self.y,
             2 => &self.z,
-            _ => panic!("Invalid vector dimension")
+            _ => panic!("Invalid vector dimension"),
         }
     }
 }
@@ -22,7 +23,7 @@ impl IndexMut<usize> for Vector3d {
             0 => &mut self.x,
             1 => &mut self.y,
             2 => &mut self.z,
-            _ => panic!("Invalid vector dimension")
+            _ => panic!("Invalid vector dimension"),
         }
     }
 }
@@ -106,11 +107,7 @@ impl Add<Vector3d> for Vector3d {
     type Output = Vector3d;
 
     fn add(self, rhs: Vector3d) -> Self::Output {
-        Vector3d::new(
-            self.x + rhs.x,
-            self.y + rhs.y,
-            self.z + rhs.z,
-        )
+        Vector3d::new(self.x + rhs.x, self.y + rhs.y, self.z + rhs.z)
     }
 }
 
@@ -118,11 +115,7 @@ impl Add<&Vector3d> for Vector3d {
     type Output = Vector3d;
 
     fn add(self, rhs: &Vector3d) -> Self::Output {
-        Vector3d::new(
-            self.x + rhs.x,
-            self.y + rhs.y,
-            self.z + rhs.z,
-        )
+        Vector3d::new(self.x + rhs.x, self.y + rhs.y, self.z + rhs.z)
     }
 }
 
@@ -130,11 +123,7 @@ impl Add<Vector3d> for &Vector3d {
     type Output = Vector3d;
 
     fn add(self, rhs: Vector3d) -> Self::Output {
-        Vector3d::new(
-            self.x + rhs.x,
-            self.y + rhs.y,
-            self.z + rhs.z,
-        )
+        Vector3d::new(self.x + rhs.x, self.y + rhs.y, self.z + rhs.z)
     }
 }
 
@@ -142,11 +131,7 @@ impl Add<&Vector3d> for &Vector3d {
     type Output = Vector3d;
 
     fn add(self, rhs: &Vector3d) -> Self::Output {
-        Vector3d::new(
-            self.x + rhs.x,
-            self.y + rhs.y,
-            self.z + rhs.z,
-        )
+        Vector3d::new(self.x + rhs.x, self.y + rhs.y, self.z + rhs.z)
     }
 }
 
@@ -162,11 +147,7 @@ impl Sub<Vector3d> for Vector3d {
     type Output = Vector3d;
 
     fn sub(self, rhs: Vector3d) -> Self::Output {
-        Vector3d::new(
-            self.x - rhs.x,
-            self.y - rhs.y,
-            self.z - rhs.z,
-        )
+        Vector3d::new(self.x - rhs.x, self.y - rhs.y, self.z - rhs.z)
     }
 }
 
@@ -174,11 +155,7 @@ impl Sub<&Vector3d> for Vector3d {
     type Output = Vector3d;
 
     fn sub(self, rhs: &Vector3d) -> Self::Output {
-        Vector3d::new(
-            self.x - rhs.x,
-            self.y - rhs.y,
-            self.z - rhs.z,
-        )
+        Vector3d::new(self.x - rhs.x, self.y - rhs.y, self.z - rhs.z)
     }
 }
 
@@ -186,11 +163,7 @@ impl Sub<Vector3d> for &Vector3d {
     type Output = Vector3d;
 
     fn sub(self, rhs: Vector3d) -> Self::Output {
-        Vector3d::new(
-            self.x - rhs.x,
-            self.y - rhs.y,
-            self.z - rhs.z,
-        )
+        Vector3d::new(self.x - rhs.x, self.y - rhs.y, self.z - rhs.z)
     }
 }
 
@@ -198,11 +171,7 @@ impl Sub<&Vector3d> for &Vector3d {
     type Output = Vector3d;
 
     fn sub(self, rhs: &Vector3d) -> Self::Output {
-        Vector3d::new(
-            self.x - rhs.x,
-            self.y - rhs.y,
-            self.z - rhs.z,
-        )
+        Vector3d::new(self.x - rhs.x, self.y - rhs.y, self.z - rhs.z)
     }
 }
 
@@ -215,12 +184,12 @@ impl SubAssign for Vector3d {
 }
 
 #[inline(always)]
-pub fn Dot(a: &Vector3d, b: &Vector3d) -> f64 {
+pub fn dot(a: &Vector3d, b: &Vector3d) -> f64 {
     return a.x * b.x + a.y * b.y + a.z * b.z;
 }
 
 #[inline(always)]
-pub fn Cross(a: &Vector3d, b: &Vector3d) -> Vector3d {
+pub fn cross(a: &Vector3d, b: &Vector3d) -> Vector3d {
     return Vector3d::new(
         a.y * b.z - a.z * b.y,
         a.z * b.x - a.x * b.z,

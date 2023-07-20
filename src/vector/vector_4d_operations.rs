@@ -1,10 +1,11 @@
-﻿use std::ops::{Add, AddAssign, Div, DivAssign, Index, IndexMut, Mul, MulAssign, Neg, Sub, SubAssign};
+use std::ops::{
+    Add, AddAssign, Div, DivAssign, Index, IndexMut, Mul, MulAssign, Neg, Sub, SubAssign,
+};
 
 use crate::vector::vector_4d::Vector4d;
 
-impl Index<usize> for Vector4d where {
+impl Index<usize> for Vector4d {
     type Output = f64;
-
 
     fn index(&self, index: usize) -> &Self::Output {
         match index {
@@ -12,7 +13,7 @@ impl Index<usize> for Vector4d where {
             1 => &self.y,
             2 => &self.z,
             3 => &self.w,
-            _ => panic!("Invalid vector dimension")
+            _ => panic!("Invalid vector dimension"),
         }
     }
 }
@@ -24,7 +25,7 @@ impl IndexMut<usize> for Vector4d {
             1 => &mut self.y,
             2 => &mut self.z,
             3 => &mut self.w,
-            _ => panic!("Invalid vector dimension")
+            _ => panic!("Invalid vector dimension"),
         }
     }
 }
@@ -33,7 +34,7 @@ impl Mul<f64> for Vector4d {
     type Output = Vector4d;
 
     fn mul(self, rhs: f64) -> Self::Output {
-        Self::new(self.x * rhs, self.y * rhs, self.z * rhs, self.w *rhs)
+        Self::new(self.x * rhs, self.y * rhs, self.z * rhs, self.w * rhs)
     }
 }
 
@@ -59,7 +60,12 @@ impl Div<f64> for Vector4d {
 
     fn div(self, rhs: f64) -> Self::Output {
         let multiplier = 1f64 / rhs;
-        Vector4d::new(self.x * multiplier, self.y * multiplier, self.z * multiplier, self.w * multiplier)
+        Vector4d::new(
+            self.x * multiplier,
+            self.y * multiplier,
+            self.z * multiplier,
+            self.w * multiplier,
+        )
     }
 }
 

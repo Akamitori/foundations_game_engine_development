@@ -1,5 +1,5 @@
-﻿use crate::matrix::matrix_3d::Matrix3d;
-use crate::vector::vector_3d::Vector3d;
+use crate::matrix::Matrix3d;
+use crate::vector::Vector3d;
 
 pub fn make_rotation_x(t: f64) -> Matrix3d {
     let c = t.cos();
@@ -53,7 +53,6 @@ pub fn make_rotation(t: f64, a: &Vector3d) -> Matrix3d {
     )
 }
 
-
 pub fn make_reflection(a: &Vector3d) -> Matrix3d {
     let x = a.x * -2f64;
     let y = a.y * -2f64;
@@ -105,8 +104,7 @@ pub fn make_scale_in_the_direction_of_a(s: f64, a: &Vector3d) -> Matrix3d {
         axaz, ayaz, z * a.z + 1f64)
 }
 
-pub fn make_skew(t: f64, a: &Vector3d, b: &Vector3d) -> Matrix3d
-{
+pub fn make_skew(t: f64, a: &Vector3d, b: &Vector3d) -> Matrix3d {
     let t = t.tan();
     let x = a.x * t;
     let y = a.y * t;

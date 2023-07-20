@@ -1,7 +1,7 @@
-﻿use std::ops::{Index, IndexMut, Mul};
+use std::ops::{Index, IndexMut};
 
-use crate::matrix::matrix_4d::Matrix4d;
-use crate::vector::vector_4d::Vector4d;
+use crate::matrix::Matrix4d;
+use crate::vector::Vector4d;
 
 impl Index<usize> for Matrix4d {
     type Output = Vector4d;
