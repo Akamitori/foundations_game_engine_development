@@ -7,7 +7,7 @@ pub type Vector3D = TransformVector<Vector3dDirection>;
 #[derive(Default, Debug, Clone)]
 #[repr(transparent)]
 pub struct Vector3dDirection {
-    v: Vector3d,
+    pub v: Vector3d,
 }
 
 impl VectorWrapper for Vector3dDirection {

@@ -3,7 +3,7 @@ use crate::vector::vector_3d_operations::{cross, dot};
 
 #[derive(Default, Debug, Clone, Copy)]
 pub struct Matrix3d {
-    n: [[f64; 3]; 3],
+    pub n: [[f64; 3]; 3],
 }
 
 impl Matrix3d {

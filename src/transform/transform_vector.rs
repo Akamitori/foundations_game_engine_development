@@ -4,6 +4,9 @@ use crate::transform::transform_vector_operations::dot;
 use crate::vector::Vector3d;
 use crate::vector::vector_3d_operations::dot as innerDot;
 
+
+
+
 pub trait VectorWrapper : Debug
 {
     fn new(x: f64, y: f64, z: f64) -> Self;
@@ -15,7 +18,7 @@ pub trait VectorWrapper : Debug
 
 #[derive(Default, Clone)]
 #[repr(transparent)]
-pub struct TransformVector<T: VectorWrapper>(T);
+pub struct TransformVector<T: VectorWrapper>(pub T);
 
 impl<T: VectorWrapper> TransformVector<T> {
     pub fn new(x: f64, y: f64, z: f64) -> Self {
@@ -70,3 +73,11 @@ impl<T: VectorWrapper> From<Vector3d> for TransformVector<T> {
         TransformVector::<T>(T::new(value.x, value.y, value.z))
     }
 }
+
+pub fn test<T : VectorWrapper>(a: T , b:T) -> Vector3d{
+    let a=a.get_vector();
+    let b=b.get_vector();
+    
+    a+b
+}
+

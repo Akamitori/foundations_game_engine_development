@@ -8,7 +8,7 @@ pub type Point3D = TransformVector<Vector3dPoint>;
 #[derive(Default, Debug, Clone)]
 #[repr(transparent)]
 pub struct Vector3dPoint {
-    v: Vector3d,
+    pub v: Vector3d,
 }
 
 impl VectorWrapper for Vector3dPoint {
