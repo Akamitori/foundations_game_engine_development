@@ -5,6 +5,7 @@ use crate::vector::Vector3d;
 use crate::vector::vector_3d_operations::{cross, dot};
 
 #[derive(Default, Debug, Clone)]
+#[repr(transparent)]
 pub struct Transform4d {
     pub m: Matrix4d,
 }

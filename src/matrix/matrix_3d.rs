@@ -2,6 +2,7 @@ use crate::vector::Vector3d;
 use crate::vector::vector_3d_operations::{cross, dot};
 
 #[derive(Default, Debug, Clone, Copy)]
+#[repr(C)]
 pub struct Matrix3d {
     pub n: [[f64; 3]; 3],
 }

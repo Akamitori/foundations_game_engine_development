@@ -2,6 +2,7 @@ use crate::vector::Vector4d;
 use crate::vector::vector_3d_operations::{cross, dot};
 
 #[derive(Default, Debug, Clone, Copy)]
+#[repr(C)]
 pub struct Matrix4d {
     pub n: [[f64; 4]; 4],
 }

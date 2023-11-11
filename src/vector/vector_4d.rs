@@ -1,6 +1,7 @@
 use crate::vector::Vector3d;
 
 #[derive(Default, Debug, Clone)]
+#[repr(C)]
 pub struct Vector4d {
     pub x: f64,
     pub y: f64,
